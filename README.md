@@ -1,3 +1,17 @@
+#how to execute
+catkin clean
+catkin build
+
+roslaunch iq_sim apm.launch
+./simulator.sh
+./sitl.sh
+./image_view.sh
+rosrun gnc ctrl
+
+
+
+---archive
+
 # gnc: An example project of BridgePoint for controlling quad copter for APRIS Robot Challange
 
 ## How to run
