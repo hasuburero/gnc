@@ -41,5 +41,4 @@ git clone https://github.com/hisazumi/gnc.git
 * Before executing gnc, run simulator.sh, sitl.sh, and apm accroding to README.md of the container.
 ```
 rosrun gnc ctrl
-``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
-`
+```
