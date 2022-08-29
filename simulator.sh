@@ -1,7 +1,11 @@
 #!/bin/bash
 
-chmod +x simulator.sh
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:/opt/ros/melodic/lib/
+echo $GAZEBO_PLUGIN_PATH
 
-gazebo --verbose worlds/my.world
+source /home/ubuntu/catkin_ws/devel/setup.bash
 
-gnome-terminal --tab -t -- roslaunch iq_sim apm.launch
+
+rosrun gazebo_ros gazebo --verbose worlds/my.world
+
+
