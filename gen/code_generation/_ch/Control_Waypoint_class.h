@@ -25,6 +25,8 @@ struct Control_Waypoint {
   r_t y;  /* - y */
   r_t z;  /* - z */
   r_t heading;  /* - heading */
+  i_t counter1;  /* - counter1 */
+  i_t counter2;  /* - counter2 */
   /* relationship storage */
   /* Note:  No storage needed for Waypoint->Controller[R1] */
   Control_Waypoint * Waypoint_R2_follows;
@@ -41,12 +43,12 @@ void Control_Waypoint_R1_Link_begin_with( Control_Controller *, Control_Waypoint
  *  Participant Waypoint is followed by formalizer
  */
 /* Navigation phrase:  R2.'follows' */
-void Control_Waypoint_R2_Link_follows( Control_Waypoint *, Control_Waypoint * );
+/* Note:  R2.'follows' never related (or not needed).  */
 /* Note:  R2.'follows' never unrelated (or not needed).  */
 /* Navigation phrase:  R2.'is followed by' */
-void Control_Waypoint_R2_Link_is_followed_by( Control_Waypoint *, Control_Waypoint * );
+/* Note:  R2.'is followed by' never related (or not needed).  */
 /* Note:  R2.'is followed by' never unrelated (or not needed).  */
-void Control_Waypoint_R3_Link_is_flying_to( Control_Controller *, Control_Waypoint * );
+/* xtUML WARNING:  Controller<-R3->Waypoint never related!  */
 /* Note:  Controller<-R3->Waypoint unrelate accessor not needed */
 
 #define Control_Waypoint_MAX_EXTENT_SIZE 50

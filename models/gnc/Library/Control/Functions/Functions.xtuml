@@ -41,83 +41,20 @@ INSERT INTO S_SYNC
 	'create object instance ctrl of Controller;
 generate Controller1:''start'' to ctrl;
 
+create object instance house of House;
+house.x = 17;
+house.y = 21;
+house.z = 7;
+relate ctrl to house across R4.''start with'';
+
 create object instance wp1 of Waypoint;
-wp1.x = 15;
+wp1.x = 17;
 wp1.y = 0;
 wp1.z = 7;
 wp1.heading=0;
+wp1.counter1=0;
+wp1.counter2=0;
 relate ctrl to wp1 across R1.''begin with'';
-relate ctrl to wp1 across R3.''is flying to'';
-
-create object instance wp2 of Waypoint;
-wp2.x = 15;
-wp2.y = 0;
-wp2.z = 5;
-wp2.heading=0;
-relate wp1 to wp2 across R2.''follows'';
-
-create object instance wp3 of Waypoint;
-wp3.x = 0;
-wp3.y = 0;
-wp3.z = 5;
-wp3.heading=0;
-relate wp2 to wp3 across R2.''follows'';
-
-create object instance wp4 of Waypoint;
-wp4.x = 0;
-wp4.y = 0;
-wp4.z = 3;
-wp4.heading=0;
-relate wp3 to wp4 across R2.''follows'';
-
-create object instance wp5 of Waypoint;
-wp5.x = 15;
-wp5.y = 0;
-wp5.z = 3;
-wp5.heading=0;
-relate wp4 to wp5 across R2.''follows'';
-
-create object instance wp6 of Waypoint;
-wp6.x = 15;
-wp6.y = 0;
-wp6.z = 1;
-wp6.heading=0;
-relate wp5 to wp6 across R2.''follows'';
-
-create object instance wp7 of Waypoint;
-wp7.x = 0;
-wp7.y = 0;
-wp7.z = 1;
-wp7.heading=0;
-relate wp6 to wp7 across R2.''follows'';
-
-create object instance wp8 of Waypoint;
-wp8.x = 15;
-wp8.y = 0;
-wp8.z = 7;
-wp8.heading=0;
-relate wp7 to wp8 across R2.''follows'';
-
-create object instance wp9 of Waypoint;
-wp9.x = 15;
-wp9.y = 0;
-wp9.z = 7;
-wp9.heading=90;
-relate wp8 to wp9 across R2.''follows'';
-
-create object instance wp10 of Waypoint;
-wp10.x = 15;
-wp10.y = 17;
-wp10.z = 7;
-wp10.heading=90;
-relate wp9 to wp10 across R2.''follows'';
-
-create object instance wp11 of Waypoint;
-wp11.x = 15;
-wp11.y = 17;
-wp11.z = 1;
-wp11.heading=90;
-relate wp10 to wp11 across R2.''follows'';
 
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",

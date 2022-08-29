@@ -26,7 +26,7 @@
  * PersistLinkCacheDepth:  128
  *
  * Component Name:  Control
- * MaxObjExtent:  60
+ * MaxObjExtent:  70
  * MaxRelExtent:  0
  * MaxSelectExtent:  0
  * MaxSelfEvents:  1

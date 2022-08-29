@@ -24,6 +24,7 @@ struct Control_Controller {
   /* relationship storage */
   /* Note:  No storage needed for Controller->Waypoint[R1] */
   Control_Waypoint * Waypoint_R3_is_flying_to;
+  Control_House * House_R4_start_with;
 };
 
 
@@ -70,6 +71,7 @@ typedef union {
 #define Control_Controller_STATE_2 2  /* state [2]:  (takeoff) */
 #define Control_Controller_STATE_3 3  /* state [3]:  (go) */
 #define Control_Controller_STATE_4 4  /* state [4]:  (land) */
+#define Control_Controller_STATE_5 5  /* state [5]:  (go_home) */
 /*
  * enumeration of state model event numbers
  */

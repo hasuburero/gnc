@@ -13,8 +13,8 @@ Class 'Waypoint' (Waypoint) extent size is 50
 Analyzing model and making optimizations....
 Self event queue needed.
 Instance event queue needed.
-4 attributes read
-4 attributes written
+9 attributes read
+9 attributes written
 translating control statements
 translating other statements
 rolling up statements into action bodies
