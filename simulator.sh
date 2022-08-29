@@ -6,6 +6,9 @@ echo $GAZEBO_PLUGIN_PATH
 source /home/ubuntu/catkin_ws/devel/setup.bash
 
 
-rosrun gazebo_ros gazebo --verbose worlds/my.world
+rosrun gazebo_ros gazebo --verbose house.world
+
+
+
 
 
