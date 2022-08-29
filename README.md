@@ -1,5 +1,7 @@
-#how to execute
-catkin clean
+## ```
+how to run
+'''
+catin clean
 catkin build
 
 roslaunch iq_sim apm.launch
@@ -8,9 +10,10 @@ roslaunch iq_sim apm.launch
 ./image_view.sh
 rosrun gnc ctrl
 
+```
 
 
----archive
+---archive---
 
 # gnc: An example project of BridgePoint for controlling quad copter for APRIS Robot Challange
 
@@ -39,4 +42,5 @@ git clone https://github.com/hisazumi/gnc.git
 * Before executing gnc, run simulator.sh, sitl.sh, and apm accroding to README.md of the container.
 ```
 rosrun gnc ctrl
-```
+``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
+`
