@@ -1,15 +1,15 @@
 WARNING:  Identify a package to build using MarkSystemConfigurationPackage in system.mark.
 WARNING:  System has been selected arbitrarily as the build configuration.
 Enabling detection of empty handles for component(s) *.
-Action statement tracing enabled for component MAV.
 Action statement tracing enabled for component Control.
+Action statement tracing enabled for component MAV.
 Enabling state transition tracing for component(s) *.
+Function setup marked as initialization function.
 ERROR:  Initialization function (setup) not found in component MAV.
   => TagInitializationFunction( setup )
-Function setup marked as initialization function.
+Class 'Waypoint' (Waypoint) extent size is 50
 ERROR:  Class (Waypoint) not found in component 'MAV'.
       => MarkObjectExtentSize( Waypoint, 50 )
-Class 'Waypoint' (Waypoint) extent size is 50
 Analyzing model and making optimizations....
 Self event queue needed.
 Instance event queue needed.
