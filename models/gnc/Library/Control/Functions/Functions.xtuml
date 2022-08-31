@@ -41,11 +41,11 @@ INSERT INTO S_SYNC
 	'create object instance ctrl of Controller;
 generate Controller1:''start'' to ctrl;
 
-create object instance house of House;
-house.x = 17;
-house.y = 21;
-house.z = 7;
-relate ctrl to house across R4.''start with'';
+//create object instance house of House;
+//house.x = 17;
+//house.y = 21;
+//house.z = 7;
+//relate ctrl to house across R4.''begin with'';
 
 create object instance wp1 of Waypoint;
 wp1.x = 17;
@@ -53,8 +53,13 @@ wp1.y = 0;
 wp1.z = 7;
 wp1.heading=0;
 wp1.counter1=0;
-wp1.counter2=0;
+wp1.housex = 19;
+wp1.housey = 23;
+wp1.housez = 7;
+wp1.cal = 7;
 relate ctrl to wp1 across R1.''begin with'';
+relate ctrl to wp1 across R3.''is flying to'';
+
 
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",

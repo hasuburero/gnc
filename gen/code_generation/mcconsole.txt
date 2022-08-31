@@ -7,6 +7,10 @@ Enabling state transition tracing for component(s) *.
 ERROR:  Initialization function (setup) not found in component MAV.
   => TagInitializationFunction( setup )
 Function setup marked as initialization function.
+ERROR:  Class (House) not found in component 'MAV'.
+      => MarkObjectExtentSize( House, 50 )
+ERROR:  Class (House) not found in component 'Control'.
+      => MarkObjectExtentSize( House, 50 )
 ERROR:  Class (Waypoint) not found in component 'MAV'.
       => MarkObjectExtentSize( Waypoint, 50 )
 Class 'Waypoint' (Waypoint) extent size is 50

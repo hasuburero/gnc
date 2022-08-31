@@ -45,7 +45,6 @@ USER_OBJ_TARGETS = \
 	${OBJ_PATH}MAV.o \
 	${OBJ_PATH}gnc_sys_main.o \
 	${OBJ_PATH}Control_Waypoint_class.o \
-	${OBJ_PATH}Control_House_class.o \
 
 #=============================================================================
 # Source file target recipes.
@@ -87,10 +86,6 @@ ${OBJ_PATH}gnc_sys_main.o : ${SRC_PATH}gnc_sys_main.c
 	${CMD_TARGET_ASSEMBLE}
 
 ${OBJ_PATH}Control_Waypoint_class.o : ${SRC_PATH}Control_Waypoint_class.c
-	${CMD_TARGET_COMPILE}
-	${CMD_TARGET_ASSEMBLE}
-
-${OBJ_PATH}Control_House_class.o : ${SRC_PATH}Control_House_class.c
 	${CMD_TARGET_COMPILE}
 	${CMD_TARGET_ASSEMBLE}
 

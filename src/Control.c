@@ -134,7 +134,7 @@ Control_halt()
 void
 Control_setup()
 {
-  Control_Waypoint * wp1;Control_House * house;Control_Controller * ctrl;
+  Control_Waypoint * wp1;Control_Controller * ctrl;
   /* CREATE OBJECT INSTANCE ctrl OF Controller */
   XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE ctrl OF Controller" );
   ctrl = (Control_Controller *) Escher_CreateInstance( Control_DOMAIN_ID, Control_Controller_CLASS_NUMBER );
@@ -143,21 +143,6 @@ Control_setup()
   { Escher_xtUMLEvent_t * e = Escher_NewxtUMLEvent( ctrl, &Control_Controllerevent1c );
     Escher_SendEvent( e );
   }
-  /* CREATE OBJECT INSTANCE house OF House */
-  XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE house OF House" );
-  house = (Control_House *) Escher_CreateInstance( Control_DOMAIN_ID, Control_House_CLASS_NUMBER );
-  /* ASSIGN house.x = 17 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN house.x = 17" );
-  ((Control_House *)xtUML_detect_empty_handle( house, "House", "house.x" ))->x = 17;
-  /* ASSIGN house.y = 21 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN house.y = 21" );
-  ((Control_House *)xtUML_detect_empty_handle( house, "House", "house.y" ))->y = 21;
-  /* ASSIGN house.z = 7 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN house.z = 7" );
-  ((Control_House *)xtUML_detect_empty_handle( house, "House", "house.z" ))->z = 7;
-  /* RELATE ctrl TO house ACROSS R4 */
-  XTUML_OAL_STMT_TRACE( 1, "RELATE ctrl TO house ACROSS R4" );
-  Control_House_R4_Link_start_with( ctrl, house );
   /* CREATE OBJECT INSTANCE wp1 OF Waypoint */
   XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE wp1 OF Waypoint" );
   wp1 = (Control_Waypoint *) Escher_CreateInstance( Control_DOMAIN_ID, Control_Waypoint_CLASS_NUMBER );
@@ -176,18 +161,29 @@ Control_setup()
   /* ASSIGN wp1.counter1 = 0 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.counter1 = 0" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.counter1" ))->counter1 = 0;
-  /* ASSIGN wp1.counter2 = 0 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.counter2 = 0" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.counter2" ))->counter2 = 0;
+  /* ASSIGN wp1.housex = 19 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housex = 19" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housex" ))->housex = 19;
+  /* ASSIGN wp1.housey = 23 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housey = 23" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housey" ))->housey = 23;
+  /* ASSIGN wp1.housez = 7 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housez = 7" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housez" ))->housez = 7;
+  /* ASSIGN wp1.cal = 7 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.cal = 7" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.cal" ))->cal = 7;
   /* RELATE ctrl TO wp1 ACROSS R1 */
   XTUML_OAL_STMT_TRACE( 1, "RELATE ctrl TO wp1 ACROSS R1" );
   Control_Waypoint_R1_Link_begin_with( ctrl, wp1 );
+  /* RELATE ctrl TO wp1 ACROSS R3 */
+  XTUML_OAL_STMT_TRACE( 1, "RELATE ctrl TO wp1 ACROSS R3" );
+  Control_Waypoint_R3_Link_is_flying_to( ctrl, wp1 );
 }
 /* xtUML class info (collections, sizes, etc.) */
 Escher_Extent_t * const Control_class_info[ Control_MAX_CLASS_NUMBERS ] = {
   &pG_Control_Controller_extent,
-  &pG_Control_Waypoint_extent,
-  &pG_Control_House_extent
+  &pG_Control_Waypoint_extent
 };
 
 /*

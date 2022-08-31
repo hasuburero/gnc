@@ -22,9 +22,8 @@ struct Control_Controller {
   Escher_StateNumber_t current_state;
   /* application analysis class attributes */
   /* relationship storage */
-  /* Note:  No storage needed for Controller->Waypoint[R1] */
+  Control_Waypoint * Waypoint_R1_begin_with;
   Control_Waypoint * Waypoint_R3_is_flying_to;
-  Control_House * House_R4_start_with;
 };
 
 

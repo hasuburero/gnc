@@ -47,16 +47,16 @@ static void Control_Controller_act2( Control_Controller *, const Escher_xtUMLEve
 static void
 Control_Controller_act2( Control_Controller * self, const Escher_xtUMLEvent_t * const event )
 {
-  Control_House * house=0;
-  /* SELECT one house RELATED BY self->House[R4.start with] */
-  XTUML_OAL_STMT_TRACE( 1, "SELECT one house RELATED BY self->House[R4.start with]" );
-  house = ( 0 != self ) ? self->House_R4_start_with : 0;
-  /* Port1::takeoff(alt:house.z) */
-  XTUML_OAL_STMT_TRACE( 1, "Port1::takeoff(alt:house.z)" );
-  Control_Port1_takeoff( ((Control_House *)xtUML_detect_empty_handle( house, "House", "house.z" ))->z );
-  /* Port1::set_heading(heading:0) */
-  XTUML_OAL_STMT_TRACE( 1, "Port1::set_heading(heading:0)" );
-  Control_Port1_set_heading( 0 );
+  Control_Waypoint * wp=0;
+  /* SELECT one wp RELATED BY self->Waypoint[R1.begin with] */
+  XTUML_OAL_STMT_TRACE( 1, "SELECT one wp RELATED BY self->Waypoint[R1.begin with]" );
+  wp = ( 0 != self ) ? self->Waypoint_R1_begin_with : 0;
+  /* Port1::takeoff(alt:wp.housez) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::takeoff(alt:wp.housez)" );
+  Control_Port1_takeoff( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.housez" ))->housez );
+  /* Port1::set_heading(heading:( 0 + wp.cal )) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::set_heading(heading:( 0 + wp.cal ))" );
+  Control_Port1_set_heading( ( 0 + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal ) );
 }
 
 /*
@@ -66,84 +66,98 @@ static void Control_Controller_act3( Control_Controller *, const Escher_xtUMLEve
 static void
 Control_Controller_act3( Control_Controller * self, const Escher_xtUMLEvent_t * const event )
 {
-  Control_House * house=0;Control_Waypoint * wp=0;
+  Control_Waypoint * wp=0;
   /* SELECT one wp RELATED BY self->Waypoint[R3.is flying to] */
   XTUML_OAL_STMT_TRACE( 1, "SELECT one wp RELATED BY self->Waypoint[R3.is flying to]" );
   wp = ( 0 != self ) ? self->Waypoint_R3_is_flying_to : 0;
-  /* SELECT one house RELATED BY self->House[R4.start with] */
-  XTUML_OAL_STMT_TRACE( 1, "SELECT one house RELATED BY self->House[R4.start with]" );
-  house = ( 0 != self ) ? self->House_R4_start_with : 0;
   /* Port1::set_destination(x:wp.x, y:wp.y, z:wp.z) */
   XTUML_OAL_STMT_TRACE( 1, "Port1::set_destination(x:wp.x, y:wp.y, z:wp.z)" );
   Control_Port1_set_destination( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.x" ))->x, ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.y" ))->y, ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z );
-  /* Port1::set_heading(heading:wp.heading) */
-  XTUML_OAL_STMT_TRACE( 1, "Port1::set_heading(heading:wp.heading)" );
-  Control_Port1_set_heading( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading );
+  /* Port1::set_heading(heading:( wp.heading + wp.cal )) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::set_heading(heading:( wp.heading + wp.cal ))" );
+  Control_Port1_set_heading( ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal ) );
   /* IF ( wp.counter1 == 0 ) */
   XTUML_OAL_STMT_TRACE( 1, "IF ( wp.counter1 == 0 )" );
   if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 0 ) {
-    /* ASSIGN wp.y = house.y */
-    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.y = house.y" );
-    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.y" ))->y = ((Control_House *)xtUML_detect_empty_handle( house, "House", "house.y" ))->y;
-    /* ASSIGN wp.heading = 90 */
-    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = 90" );
-    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = 90;
+    /* ASSIGN wp.y = wp.housey */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.y = wp.housey" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.y" ))->y = ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.housey" ))->housey;
+    /* ASSIGN wp.heading = ( 90 + wp.cal ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = ( 90 + wp.cal )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = ( 90 + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal );
   }
   else if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 1 ) {
     /* ASSIGN wp.x = 0 */
     XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.x = 0" );
     ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.x" ))->x = 0;
-    /* ASSIGN wp.heading = 180 */
-    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = 180" );
-    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = 180;
+    /* ASSIGN wp.heading = ( 180 + wp.cal ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = ( 180 + wp.cal )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = ( 180 + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal );
   }
   else if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 2 ) {
     /* ASSIGN wp.y = 0 */
     XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.y = 0" );
     ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.y" ))->y = 0;
-    /* ASSIGN wp.heading = 270 */
-    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = 270" );
-    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = 270;
+    /* ASSIGN wp.heading = ( 270 + wp.cal ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = ( 270 + wp.cal )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = ( 270 + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal );
+  }
+  else if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 3 ) {
+    /* ASSIGN wp.x = 0 */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.x = 0" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.x" ))->x = 0;
+    /* ASSIGN wp.heading = ( 0 + wp.cal ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = ( 0 + wp.cal )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = ( 0 + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal );
   }
   else {
-    /* ASSIGN wp.x = house.x */
-    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.x = house.x" );
-    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.x" ))->x = ((Control_House *)xtUML_detect_empty_handle( house, "House", "house.x" ))->x;
-    /* ASSIGN wp.heading = 0 */
-    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = 0" );
-    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = 0;
+    /* ASSIGN wp.x = wp.housex */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.x = wp.housex" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.x" ))->x = ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.housex" ))->housex;
+    /* ASSIGN wp.y = 0 */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.y = 0" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.y" ))->y = 0;
+    /* ASSIGN wp.heading = ( 0 + wp.cal ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.heading = ( 0 + wp.cal )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading = ( 0 + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal );
   }
-  /* ASSIGN wp.counter1 = ( wp.counter1 + 1 ) */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp.counter1 = ( wp.counter1 + 1 )" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 + 1 );
-  /* IF ( wp.counter1 == 3 ) */
-  XTUML_OAL_STMT_TRACE( 1, "IF ( wp.counter1 == 3 )" );
-  if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 3 ) {
-    /* IF ( wp.z == 2 ) */
-    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z == 2 )" );
-    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 2 ) {
-      /* ASSIGN wp.z = 1 */
-      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = 1" );
-      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = 1;
-      /* ASSIGN wp.counter1 = 0 */
-      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.counter1 = 0" );
-      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = 0;
-    }
-    else if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 1 ) {
+  /* IF ( wp.counter1 == 4 ) */
+  XTUML_OAL_STMT_TRACE( 1, "IF ( wp.counter1 == 4 )" );
+  if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 4 ) {
+    /* ASSIGN wp.counter1 = 0 */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.counter1 = 0" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = 0;
+    /* IF ( wp.z == 1 ) */
+    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z == 1 )" );
+    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 1 ) {
       /* GENERATE Controller3:halt() TO self */
       XTUML_OAL_STMT_TRACE( 3, "GENERATE Controller3:halt() TO self" );
       { Escher_xtUMLEvent_t * e = Escher_NewxtUMLEvent( self, &Control_Controllerevent3c );
         Escher_SendSelfEvent( e );
       }
     }
+  }
+  else if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 3 ) {
+    /* IF ( wp.z == 2 ) */
+    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z == 2 )" );
+    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 2 ) {
+      /* ASSIGN wp.z = 1 */
+      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = 1" );
+      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = 1;
+    }
     else {
       /* ASSIGN wp.z = ( wp.z - 2 ) */
       XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = ( wp.z - 2 )" );
       ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z - 2 );
-      /* ASSIGN wp.counter1 = 0 */
-      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.counter1 = 0" );
-      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = 0;
     }
+    /* ASSIGN wp.counter1 = ( wp.counter1 + 1 ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.counter1 = ( wp.counter1 + 1 )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 + 1 );
+  }
+  else {
+    /* ASSIGN wp.counter1 = ( wp.counter1 + 1 ) */
+    XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.counter1 = ( wp.counter1 + 1 )" );
+    ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 + 1 );
   }
 }
 

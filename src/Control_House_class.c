@@ -15,14 +15,14 @@
  * RELATE Controller TO House ACROSS R4
  */
 void
-Control_House_R4_Link_start_with( Control_Controller * part, Control_House * form )
+Control_House_R4_Link_begin_with( Control_Controller * part, Control_House * form )
 {
   if ( (part == 0) || (form == 0) ) {
-    XTUML_EMPTY_HANDLE_TRACE( "House", "Control_House_R4_Link_start_with" );
+    XTUML_EMPTY_HANDLE_TRACE( "House", "Control_House_R4_Link_begin_with" );
     return;
   }
   /* Note:  House->Controller[R4] not navigated */
-  part->House_R4_start_with = form;
+  part->House_R4_begin_with = form;
 }
 /*
  * Statically allocate space for the instance population for this class.

@@ -1,4 +1,5 @@
 .invoke MarkObjectExtentSize( "*", "Waypoint", 50 )
+.invoke MarkObjectExtentSize( "*", "House", 50)
 .invoke MarkInitializationFunction( "*", "setup" )
 .invoke MarkStateTransitionTracingOn( "*" )
 .invoke MarkActionStatementTracingOn( "*" )

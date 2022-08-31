@@ -69,6 +69,7 @@
 .//   .invoke MarkObjectExtentSize( "myDomain", "MY_OBJ", 20 )
 .//============================================================================
 .invoke MarkObjectExtentSize( "*", "Waypoint", 50 )
+.invoke MarkObjectExtentSize( "*", "House", 50)
 .//
 .//============================================================================
 .// MarkClassTraceOn( "component", "key_letters" )

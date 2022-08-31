@@ -22,7 +22,7 @@ Control_Waypoint_R1_Link_begin_with( Control_Controller * part, Control_Waypoint
     return;
   }
   /* Note:  Waypoint->Controller[R1] not navigated */
-  /* Note:  Controller->Waypoint[R1] not navigated */
+  part->Waypoint_R1_begin_with = form;
 }
 /* Note:  R2.'follows' never related (or not needed).  */
 
@@ -30,6 +30,20 @@ Control_Waypoint_R1_Link_begin_with( Control_Controller * part, Control_Waypoint
 /* Note:  R2.'is followed by' never related (or not needed).  */
 
 /* Note:  R2.'is followed by' never unrelated (or not needed).  */
+
+/*
+ * RELATE Controller TO Waypoint ACROSS R3
+ */
+void
+Control_Waypoint_R3_Link_is_flying_to( Control_Controller * part, Control_Waypoint * form )
+{
+  if ( (part == 0) || (form == 0) ) {
+    XTUML_EMPTY_HANDLE_TRACE( "Waypoint", "Control_Waypoint_R3_Link_is_flying_to" );
+    return;
+  }
+  /* Note:  Waypoint->Controller[R3] not navigated */
+  part->Waypoint_R3_is_flying_to = form;
+}
 /*
  * Statically allocate space for the instance population for this class.
  * Allocate space for the class instance and its attribute values.

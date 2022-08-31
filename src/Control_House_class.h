@@ -26,12 +26,15 @@ struct Control_House {
   r_t z;  /* - z */
   /* relationship storage */
   /* Note:  No storage needed for House->Controller[R4] */
+  /* Note:  No storage needed for House->Controller[R5] */
 };
 
-void Control_House_R4_Link_start_with( Control_Controller *, Control_House * );
+void Control_House_R4_Link_begin_with( Control_Controller *, Control_House * );
 /* Note:  Controller<-R4->House unrelate accessor not needed */
+/* xtUML WARNING:  Controller<-R5->House never related!  */
+/* Note:  Controller<-R5->House unrelate accessor not needed */
 
-#define Control_House_MAX_EXTENT_SIZE 10
+#define Control_House_MAX_EXTENT_SIZE 50
 extern Escher_Extent_t pG_Control_House_extent;
 
 #ifdef	__cplusplus

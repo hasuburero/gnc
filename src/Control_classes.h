@@ -25,8 +25,7 @@ void Control_execute_initialization( void );
 /* Define constants to map to class numbers.  */
 #define Control_Controller_CLASS_NUMBER 0
 #define Control_Waypoint_CLASS_NUMBER 1
-#define Control_House_CLASS_NUMBER 2
-#define Control_MAX_CLASS_NUMBERS 3
+#define Control_MAX_CLASS_NUMBERS 2
 
 /* Provide a map of classes to task numbers.  */
 #define Control_TASK_NUMBERS  0
@@ -38,7 +37,6 @@ void Control_execute_initialization( void );
 
 typedef struct Control_Controller Control_Controller;
 typedef struct Control_Waypoint Control_Waypoint;
-typedef struct Control_House Control_House;
 
 /* union of class declarations so we may derive largest class size */
 #define Control_CLASS_U \
@@ -53,7 +51,6 @@ void Control_setup( void );
 #include "Control.h"
 #include "Control_Controller_class.h"
 #include "Control_Waypoint_class.h"
-#include "Control_House_class.h"
 /*
  * roll-up of all events (with their parameters) for component Control
  */
