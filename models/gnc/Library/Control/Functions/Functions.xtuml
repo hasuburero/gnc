@@ -48,17 +48,36 @@ generate Controller1:''start'' to ctrl;
 //relate ctrl to house across R4.''begin with'';
 
 create object instance wp1 of Waypoint;
-wp1.x = 17;
+wp1.startx = 10;
+wp1.starty = 10;
+wp1.startz = 7;
+wp1.x = 18;
 wp1.y = 0;
 wp1.z = 7;
 wp1.heading=0;
 wp1.counter1=0;
-wp1.housex = 19;
+wp1.housex = 18;
 wp1.housey = 23;
 wp1.housez = 7;
 wp1.cal = 7;
 relate ctrl to wp1 across R1.''begin with'';
 relate ctrl to wp1 across R3.''is flying to'';
+relate ctrl to wp1 across R4.''prev_pointer'';
+
+create object instance wp2 of Waypoint;
+wp2.startx = -20;
+wp2.starty = 0.168747;
+wp2.startz = 7;
+wp2.x = 18;
+wp2.y = 0;
+wp2.z = 7;
+wp2.heading=0;
+wp2.counter1=0;
+wp2.housex = 18;
+wp2.housey = 23;
+wp2.housez = 7;
+wp2.cal = 7;
+relate wp1 to wp2 across R2.''follows'';
 
 
 ',
@@ -86,6 +105,24 @@ generate Controller3:''halt'' to ctrl;
 	0);
 INSERT INTO PE_PE
 	VALUES ("86422825-e887-45cf-a079-318955dfe228",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("d638f011-036f-4881-9335-64737a8794d0",
+	"00000000-0000-0000-0000-000000000000",
+	'halt2',
+	'',
+	'select any ctrl from instances of Controller;
+generate Controller4:''halt2'' to ctrl;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("d638f011-036f-4881-9335-64737a8794d0",
 	1,
 	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
 	"00000000-0000-0000-0000-000000000000",

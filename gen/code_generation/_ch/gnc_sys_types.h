@@ -29,7 +29,7 @@
  * MaxObjExtent:  60
  * MaxRelExtent:  0
  * MaxSelectExtent:  0
- * MaxSelfEvents:  1
+ * MaxSelfEvents:  2
  * MaxNonSelfEvents:  1
  * MaxPriorityEvents:  0
  * MaxTimers:  0
@@ -81,7 +81,7 @@ typedef unsigned char bool;
 #define ESCHER_SYS_MAX_ASSOCIATION_EXTENT 0
 #define ESCHER_SYS_MAX_TRANSIENT_EXTENT 0
 #define SYS_MAX_CONTAINERS ( ESCHER_SYS_MAX_ASSOCIATION_EXTENT + ESCHER_SYS_MAX_TRANSIENT_EXTENT )
-#define ESCHER_SYS_MAX_SELF_EVENTS 2
+#define ESCHER_SYS_MAX_SELF_EVENTS 3
 #define ESCHER_SYS_MAX_NONSELF_EVENTS 2
 #define ESCHER_SYS_MAX_XTUML_EVENTS ( ESCHER_SYS_MAX_SELF_EVENTS + ESCHER_SYS_MAX_NONSELF_EVENTS )
 #define ESCHER_SYS_MAX_XTUML_TIMERS 0

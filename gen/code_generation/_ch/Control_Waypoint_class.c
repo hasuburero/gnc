@@ -24,10 +24,36 @@ Control_Waypoint_R1_Link_begin_with( Control_Controller * part, Control_Waypoint
   /* Note:  Waypoint->Controller[R1] not navigated */
   part->Waypoint_R1_begin_with = form;
 }
-/* Note:  R2.'follows' never related (or not needed).  */
+
+/*
+ * RELATE <left> Waypoint TO <right> Waypoint ACROSS R2.'follows'
+ */
+void
+Control_Waypoint_R2_Link_follows( Control_Waypoint * left, Control_Waypoint * right )
+{
+  if ( (left == 0) || (right == 0) ) {
+    XTUML_EMPTY_HANDLE_TRACE( "Waypoint", "Control_Waypoint_R2_Link_follows" );
+    return;
+  }
+  left->Waypoint_R2_follows = right; /* SR L1 */
+  right->Waypoint_R2_is_followed_by = left; /* SR L2 */
+}
 
 /* Note:  R2.'follows' never unrelated (or not needed).  */
-/* Note:  R2.'is followed by' never related (or not needed).  */
+
+/*
+ * RELATE <left> Waypoint TO <right> Waypoint ACROSS R2.'is followed by'
+ */
+void
+Control_Waypoint_R2_Link_is_followed_by( Control_Waypoint * left, Control_Waypoint * right )
+{
+  if ( (left == 0) || (right == 0) ) {
+    XTUML_EMPTY_HANDLE_TRACE( "Waypoint", "Control_Waypoint_R2_Link_is_followed_by" );
+    return;
+  }
+  right->Waypoint_R2_follows = left; /* SR L4 */
+  left->Waypoint_R2_is_followed_by = right; /* SR L5 */
+}
 
 /* Note:  R2.'is followed by' never unrelated (or not needed).  */
 

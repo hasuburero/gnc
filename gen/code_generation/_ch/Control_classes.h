@@ -46,6 +46,7 @@ typedef struct Control_Waypoint Control_Waypoint;
  * UML Domain Functions (Synchronous Services)
  */
 void Control_halt( void );
+void Control_halt2( void );
 void Control_setup( void );
 
 #include "Control.h"
