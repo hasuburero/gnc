@@ -85,6 +85,8 @@ typedef union {
 #define Control_Controller_STATE_6 6  /* state [6]:  (start_pos1) */
 #define Control_Controller_STATE_7 7  /* state [7]:  (start_pos2) */
 #define Control_Controller_STATE_8 8  /* state [8]:  (start_pos3) */
+#define Control_Controller_STATE_9 9  /* state [9]:  (end_pos1) */
+#define Control_Controller_STATE_10 10  /* state [10]:  (end_pos2) */
 /*
  * enumeration of state model event numbers
  */

@@ -163,18 +163,18 @@ Control_setup()
   /* CREATE OBJECT INSTANCE wp1 OF Waypoint */
   XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE wp1 OF Waypoint" );
   wp1 = (Control_Waypoint *) Escher_CreateInstance( Control_DOMAIN_ID, Control_Waypoint_CLASS_NUMBER );
-  /* ASSIGN wp1.startx = 10 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.startx = 10" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.startx" ))->startx = 10;
-  /* ASSIGN wp1.starty = 10 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.starty = 10" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.starty" ))->starty = 10;
+  /* ASSIGN wp1.startx = 9 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.startx = 9" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.startx" ))->startx = 9;
+  /* ASSIGN wp1.starty = 9 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.starty = 9" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.starty" ))->starty = 9;
   /* ASSIGN wp1.startz = 7 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.startz = 7" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.startz" ))->startz = 7;
-  /* ASSIGN wp1.x = 18 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.x = 18" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.x" ))->x = 18;
+  /* ASSIGN wp1.x = 21 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.x = 21" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.x" ))->x = 21;
   /* ASSIGN wp1.y = 0 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.y = 0" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.y" ))->y = 0;
@@ -187,18 +187,18 @@ Control_setup()
   /* ASSIGN wp1.counter1 = 0 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.counter1 = 0" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.counter1" ))->counter1 = 0;
-  /* ASSIGN wp1.housex = 18 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housex = 18" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housex" ))->housex = 18;
-  /* ASSIGN wp1.housey = 23 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housey = 23" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housey" ))->housey = 23;
+  /* ASSIGN wp1.housex = 21 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housex = 21" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housex" ))->housex = 21;
+  /* ASSIGN wp1.housey = 25.5 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housey = 25.5" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housey" ))->housey = 25.5;
   /* ASSIGN wp1.housez = 7 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.housez = 7" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.housez" ))->housez = 7;
-  /* ASSIGN wp1.cal = 7 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.cal = 7" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.cal" ))->cal = 7;
+  /* ASSIGN wp1.cal = 9 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp1.cal = 9" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp1, "Waypoint", "wp1.cal" ))->cal = 9;
   /* RELATE ctrl TO wp1 ACROSS R1 */
   XTUML_OAL_STMT_TRACE( 1, "RELATE ctrl TO wp1 ACROSS R1" );
   Control_Waypoint_R1_Link_begin_with( ctrl, wp1 );
@@ -211,18 +211,18 @@ Control_setup()
   /* CREATE OBJECT INSTANCE wp2 OF Waypoint */
   XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE wp2 OF Waypoint" );
   wp2 = (Control_Waypoint *) Escher_CreateInstance( Control_DOMAIN_ID, Control_Waypoint_CLASS_NUMBER );
-  /* ASSIGN wp2.startx = - 20 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.startx = - 20" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.startx" ))->startx = -20;
-  /* ASSIGN wp2.starty = 0.168747 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.starty = 0.168747" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.starty" ))->starty = 0.168747;
+  /* ASSIGN wp2.startx = - 21 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.startx = - 21" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.startx" ))->startx = -21;
+  /* ASSIGN wp2.starty = ( - 1 + 0.168747 ) */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.starty = ( - 1 + 0.168747 )" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.starty" ))->starty = ( -1 + 0.168747 );
   /* ASSIGN wp2.startz = 7 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.startz = 7" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.startz" ))->startz = 7;
-  /* ASSIGN wp2.x = 18 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.x = 18" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.x" ))->x = 18;
+  /* ASSIGN wp2.x = 21 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.x = 21" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.x" ))->x = 21;
   /* ASSIGN wp2.y = 0 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.y = 0" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.y" ))->y = 0;
@@ -235,18 +235,18 @@ Control_setup()
   /* ASSIGN wp2.counter1 = 0 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.counter1 = 0" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.counter1" ))->counter1 = 0;
-  /* ASSIGN wp2.housex = 18 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.housex = 18" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.housex" ))->housex = 18;
-  /* ASSIGN wp2.housey = 23 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.housey = 23" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.housey" ))->housey = 23;
+  /* ASSIGN wp2.housex = 21 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.housex = 21" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.housex" ))->housex = 21;
+  /* ASSIGN wp2.housey = 25.5 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.housey = 25.5" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.housey" ))->housey = 25.5;
   /* ASSIGN wp2.housez = 7 */
   XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.housez = 7" );
   ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.housez" ))->housez = 7;
-  /* ASSIGN wp2.cal = 7 */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.cal = 7" );
-  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.cal" ))->cal = 7;
+  /* ASSIGN wp2.cal = 9 */
+  XTUML_OAL_STMT_TRACE( 1, "ASSIGN wp2.cal = 9" );
+  ((Control_Waypoint *)xtUML_detect_empty_handle( wp2, "Waypoint", "wp2.cal" ))->cal = 9;
   /* RELATE wp1 TO wp2 ACROSS R2 */
   XTUML_OAL_STMT_TRACE( 1, "RELATE wp1 TO wp2 ACROSS R2" );
   Control_Waypoint_R2_Link_follows( wp1, wp2 );

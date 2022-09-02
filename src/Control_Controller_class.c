@@ -279,6 +279,40 @@ Control_Controller_act8( Control_Controller * self, const Escher_xtUMLEvent_t * 
   Control_Port1_set_heading( ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.heading" ))->heading + ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal ) );
 }
 
+/*
+ * State 9:  [end_pos1]
+ */
+static void Control_Controller_act9( Control_Controller *, const Escher_xtUMLEvent_t * const );
+static void
+Control_Controller_act9( Control_Controller * self, const Escher_xtUMLEvent_t * const event )
+{
+  Control_Waypoint * wp=0;
+  /* SELECT one wp RELATED BY self->Waypoint[R3.is flying to] */
+  XTUML_OAL_STMT_TRACE( 1, "SELECT one wp RELATED BY self->Waypoint[R3.is flying to]" );
+  wp = ( 0 != self ) ? self->Waypoint_R3_is_flying_to : 0;
+  /* Port1::set_destination(x:wp.startx, y:wp.starty, z:10) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::set_destination(x:wp.startx, y:wp.starty, z:10)" );
+  Control_Port1_set_destination( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.startx" ))->startx, ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.starty" ))->starty, 10 );
+  /* Port1::set_heading(heading:wp.cal) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::set_heading(heading:wp.cal)" );
+  Control_Port1_set_heading( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.cal" ))->cal );
+}
+
+/*
+ * State 10:  [end_pos2]
+ */
+static void Control_Controller_act10( Control_Controller *, const Escher_xtUMLEvent_t * const );
+static void
+Control_Controller_act10( Control_Controller * self, const Escher_xtUMLEvent_t * const event )
+{
+  /* Port1::set_destination(x:0, y:0, z:10) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::set_destination(x:0, y:0, z:10)" );
+  Control_Port1_set_destination( 0, 0, 10 );
+  /* Port1::set_heading(heading:0) */
+  XTUML_OAL_STMT_TRACE( 1, "Port1::set_heading(heading:0)" );
+  Control_Port1_set_heading( 0 );
+}
+
 const Escher_xtUMLEventConstant_t Control_Controllerevent1c = {
   Control_DOMAIN_ID, Control_Controller_CLASS_NUMBER, CONTROL_CONTROLLEREVENT1NUM,
   ESCHER_IS_INSTANCE_EVENT };
@@ -299,7 +333,7 @@ const Escher_xtUMLEventConstant_t Control_Controllerevent4c = {
  * Row zero is the uninitialized state (e.g., for creation event transitions).
  * Column index is (MC enumerated) state machine events.
  */
-static const Escher_SEMcell_t Control_Controller_StateEventMatrix[ 8 + 1 ][ 4 ] = {
+static const Escher_SEMcell_t Control_Controller_StateEventMatrix[ 10 + 1 ][ 4 ] = {
   /* row 0:  uninitialized state (for creation events) */
   { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
   /* row 1:  Control_Controller_STATE_1 (init) */
@@ -307,7 +341,7 @@ static const Escher_SEMcell_t Control_Controller_StateEventMatrix[ 8 + 1 ][ 4 ] 
   /* row 2:  Control_Controller_STATE_2 (takeoff) */
   { EVENT_CANT_HAPPEN, Control_Controller_STATE_6, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
   /* row 3:  Control_Controller_STATE_3 (go) */
-  { EVENT_CANT_HAPPEN, Control_Controller_STATE_3, Control_Controller_STATE_5, Control_Controller_STATE_8 },
+  { EVENT_CANT_HAPPEN, Control_Controller_STATE_3, Control_Controller_STATE_9, Control_Controller_STATE_8 },
   /* row 4:  Control_Controller_STATE_4 (land) */
   { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
   /* row 5:  Control_Controller_STATE_5 (go_home) */
@@ -317,14 +351,18 @@ static const Escher_SEMcell_t Control_Controller_StateEventMatrix[ 8 + 1 ][ 4 ] 
   /* row 7:  Control_Controller_STATE_7 (start_pos2) */
   { EVENT_CANT_HAPPEN, Control_Controller_STATE_3, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
   /* row 8:  Control_Controller_STATE_8 (start_pos3) */
-  { EVENT_CANT_HAPPEN, Control_Controller_STATE_6, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN }
+  { EVENT_CANT_HAPPEN, Control_Controller_STATE_6, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
+  /* row 9:  Control_Controller_STATE_9 (end_pos1) */
+  { EVENT_CANT_HAPPEN, Control_Controller_STATE_10, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
+  /* row 10:  Control_Controller_STATE_10 (end_pos2) */
+  { EVENT_CANT_HAPPEN, Control_Controller_STATE_5, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN }
 };
 
   /*
    * Array of pointers to the class state action procedures.
    * Index is the (MC enumerated) number of the state action to execute.
    */
-  static const StateAction_t Control_Controller_acts[ 9 ] = {
+  static const StateAction_t Control_Controller_acts[ 11 ] = {
     (StateAction_t) 0,
     (StateAction_t) Control_Controller_act1,  /* init */
     (StateAction_t) Control_Controller_act2,  /* takeoff */
@@ -333,14 +371,16 @@ static const Escher_SEMcell_t Control_Controller_StateEventMatrix[ 8 + 1 ][ 4 ] 
     (StateAction_t) Control_Controller_act5,  /* go_home */
     (StateAction_t) Control_Controller_act6,  /* start_pos1 */
     (StateAction_t) Control_Controller_act7,  /* start_pos2 */
-    (StateAction_t) Control_Controller_act8  /* start_pos3 */
+    (StateAction_t) Control_Controller_act8,  /* start_pos3 */
+    (StateAction_t) Control_Controller_act9,  /* end_pos1 */
+    (StateAction_t) Control_Controller_act10  /* end_pos2 */
   };
 
   /*
    * Array of string names of the state machine names.
    * Index is the (MC enumerated) number of the state.
    */
-  static const c_t * const state_name_strings[ 9 ] = {
+  static const c_t * const state_name_strings[ 11 ] = {
     "",
     "init",
     "takeoff",
@@ -349,7 +389,9 @@ static const Escher_SEMcell_t Control_Controller_StateEventMatrix[ 8 + 1 ][ 4 ] 
     "go_home",
     "start_pos1",
     "start_pos2",
-    "start_pos3"
+    "start_pos3",
+    "end_pos1",
+    "end_pos2"
   };
 
 /*
@@ -364,12 +406,12 @@ Control_Controller_Dispatch( Escher_xtUMLEvent_t * event )
   Escher_StateNumber_t next_state;
   if ( 0 != instance ) {
     current_state = instance->current_state;
-    if ( current_state > 8 ) {
+    if ( current_state > 10 ) {
       /* instance validation failure (object deleted while event in flight) */
       UserEventNoInstanceCallout( event_number );
     } else {
       next_state = Control_Controller_StateEventMatrix[ current_state ][ event_number ];
-      if ( next_state <= 8 ) {
+      if ( next_state <= 10 ) {
         STATE_TXN_START_TRACE( "Controller", current_state, state_name_strings[ current_state ] );
         /* Update the current state and execute the state action.  */
         instance->current_state = next_state;
