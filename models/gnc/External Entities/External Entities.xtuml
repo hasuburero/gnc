@@ -21,10 +21,10 @@ INSERT INTO GD_MD
 	1,
 	0,
 	0,
+	200,
+	150,
 	0,
-	0,
-	0,
-	'3.4.4',
+	'4.1.17',
 	'gnc::External Entities');
 INSERT INTO GD_GE
 	VALUES ("d438159c-03c0-42c4-a4a2-375efdb56af7",

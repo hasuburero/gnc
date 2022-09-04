@@ -137,9 +137,9 @@ Control_Controller_act3( Control_Controller * self, const Escher_xtUMLEvent_t * 
     /* ASSIGN wp.counter1 = 0 */
     XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.counter1 = 0" );
     ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 = 0;
-    /* IF ( wp.z == 1 ) */
-    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z == 1 )" );
-    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 1 ) {
+    /* IF ( wp.z <= 1 ) */
+    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z <= 1 )" );
+    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z <= 1 ) {
       Control_Waypoint * next_wp=0;
       /* SELECT one next_wp RELATED BY wp->Waypoint[R2.follows] */
       XTUML_OAL_STMT_TRACE( 3, "SELECT one next_wp RELATED BY wp->Waypoint[R2.follows]" );
@@ -169,17 +169,17 @@ Control_Controller_act3( Control_Controller * self, const Escher_xtUMLEvent_t * 
     }
   }
   else if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.counter1" ))->counter1 == 3 ) {
-    /* IF ( wp.z == 2 ) */
-    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z == 2 )" );
-    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 2 ) {
-      /* ASSIGN wp.z = 1 */
-      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = 1" );
-      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = 1;
+    /* IF ( wp.z == 4 ) */
+    XTUML_OAL_STMT_TRACE( 2, "IF ( wp.z == 4 )" );
+    if ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z == 4 ) {
+      /* ASSIGN wp.z = 2 */
+      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = 2" );
+      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = 2;
     }
     else {
-      /* ASSIGN wp.z = ( wp.z - 2 ) */
-      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = ( wp.z - 2 )" );
-      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z - 2 );
+      /* ASSIGN wp.z = ( wp.z - 3 ) */
+      XTUML_OAL_STMT_TRACE( 3, "ASSIGN wp.z = ( wp.z - 3 )" );
+      ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z = ( ((Control_Waypoint *)xtUML_detect_empty_handle( wp, "Waypoint", "wp.z" ))->z - 3 );
     }
     /* ASSIGN wp.counter1 = ( wp.counter1 + 1 ) */
     XTUML_OAL_STMT_TRACE( 2, "ASSIGN wp.counter1 = ( wp.counter1 + 1 )" );

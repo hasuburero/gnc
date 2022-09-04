@@ -716,7 +716,7 @@ end if;
 
 if(wp.counter1 == 4)
 	wp.counter1 = 0;
-	if(wp.z == 1)
+	if(wp.z <= 1)
 		select one next_wp related by wp->Waypoint[R2.''follows''];
 		if(not_empty next_wp)
 			relate self to next_wp across R3.''is flying to'';
@@ -727,10 +727,10 @@ if(wp.counter1 == 4)
 		end if;
 	end if;
 elif(wp.counter1 == 3)
-	if(wp.z == 2)
-		wp.z = 1;
+	if(wp.z == 4)
+		wp.z = 2;
 	else
-		wp.z = wp.z - 2;
+		wp.z = wp.z - 3;
 	end if;		
 	wp.counter1 = wp.counter1 + 1;
 else
@@ -833,7 +833,8 @@ INSERT INTO SM_ACT
 	'select one wp related by self->Waypoint[R3.''is flying to''];
 
 Port1::set_destination( x:wp.startx, y:wp.starty, z:10 );
-Port1::set_heading( heading:wp.heading+wp.cal );',
+Port1::set_heading( heading:wp.heading+wp.cal );
+',
 	'',
 	0);
 INSERT INTO SM_TAH

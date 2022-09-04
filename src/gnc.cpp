@@ -474,6 +474,11 @@ int gnc_land()
   }
 }
 
+void gnc_take_picture(int take_picture_counter)
+{
+	++take_picture_counter;
+}
+
 void command_cb(const std_msgs::String::ConstPtr& msg)
 {
 	ROS_INFO("recv message");
