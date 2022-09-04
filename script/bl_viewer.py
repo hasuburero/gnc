@@ -15,15 +15,15 @@ def process_image(msg):
         #bgr8 to hsv
         hsv_img = cv2.cvtColor(bgr_img,cv2.COLOR_BGR2HSV)
         #blue only
-        lower = np.array([90,0,30])
+        lower = np.array([90,60,0])
         upper = np.array([150,255,255])
         #mask
         frame_mask = cv2.inRange(bgr_img,lower,upper)
-        blue_img = cv2.bitwise_not(hsv_img,hsv_img,frame_mask)
+        blue_img = cv2.bitwise_and(hsv_img,hsv_img,frame_mask)
         #hsv to bgr8
-        blue_bgr_img = cv2.cvtColor(blue_img,cv2.COLOR_HSV2BGR)
+        blue_bgr_img = cv2.cvtColor(frame_mask,cv2.COLOR_HSV2BGR)
         #viewer
-        cv2.imshow('img',blue_bgr_img)
+        cv2.imshow('img',frame_mask)
         cv2.waitKey(10)
     except Exception as err:
         print err
